@@ -1,0 +1,32 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+dist/
+
+# Environment secrets
+.env
+
+# Old ML models (not needed on GitHub)
+backend/fake_news_model.pkl
+backend/tfidf_vectorizer.pkl
+model/fake_news_model.pkl
+model/tfidf_vectorizer.pkl
+training/*.pkl
+
+# New DistilBERT model (too large for GitHub)
+model/fake_news_distilbert/
+
+
+model/fake_news_distilbert.zip
+
+# Dataset files (large, not code)
+dataset/
+training/*.csv
+
+# OS files
+.DS_Store
+Thumbs.db
