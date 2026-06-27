@@ -23,6 +23,9 @@ model/fake_news_distilbert/
 
 model/fake_news_distilbert.zip
 
+model/Fake.csv
+model/True.csv
+
 # Dataset files (large, not code)
 dataset/
 training/*.csv
