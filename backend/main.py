@@ -25,14 +25,30 @@ Base.metadata.create_all(bind=engine)
 ACTIVE_MODEL = "distilbert"   # change to "old" to roll back
 
 # ---- OLD model (TF-IDF + Logistic Regression) — kept as backup ----
-old_model = joblib.load("fake_news_model.pkl")
-old_vectorizer = joblib.load("tfidf_vectorizer.pkl")
+# old_model = joblib.load("fake_news_model.pkl")
+# old_vectorizer = joblib.load("tfidf_vectorizer.pkl")
 
-# ---- NEW model (DistilBERT) ----
-MODEL_PATH = "../model/fake_news_distilbert"
-tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
-distilbert_model = AutoModelForSequenceClassification.from_pretrained(MODEL_PATH)
-distilbert_model.eval()  # tells PyTorch: prediction mode only, not training
+# # ---- NEW model (DistilBERT) ----
+# MODEL_PATH = "../model/fake_news_distilbert"
+# tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
+# distilbert_model = AutoModelForSequenceClassification.from_pretrained(MODEL_PATH)
+# distilbert_model.eval()  # tells PyTorch: prediction mode only, not training
+
+# new code 
+
+# ---- OLD model (TF-IDF + Logistic Regression) — only loaded if active ----
+if ACTIVE_MODEL == "old":
+    old_model = joblib.load("fake_news_model.pkl")
+    old_vectorizer = joblib.load("tfidf_vectorizer.pkl")
+
+# ---- NEW model (DistilBERT) — only loaded if active ----
+if ACTIVE_MODEL == "distilbert":
+    MODEL_PATH = "../model/fake_news_distilbert"
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
+    distilbert_model = AutoModelForSequenceClassification.from_pretrained(MODEL_PATH)
+    distilbert_model.eval()  # tells PyTorch: prediction mode only, not training
+
+
 
 
 # Database connection function
