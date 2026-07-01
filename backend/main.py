@@ -43,7 +43,8 @@ if ACTIVE_MODEL == "old":
 
 # ---- NEW model (DistilBERT) — only loaded if active ----
 if ACTIVE_MODEL == "distilbert":
-    MODEL_PATH = "../model/fake_news_distilbert"
+    # MODEL_PATH = "../model/fake_news_distilbert"
+    MODEL_PATH = "Dhanashri-Adawade/fake-news-distilbert"
     tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
     distilbert_model = AutoModelForSequenceClassification.from_pretrained(MODEL_PATH)
     distilbert_model.eval()  # tells PyTorch: prediction mode only, not training
